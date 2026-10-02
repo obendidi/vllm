@@ -318,6 +318,9 @@ class GPUModelRunner(LoRAModelRunnerMixin):
             device=self.device,
             num_prefill_lookahead=num_prefill_lookahead,
         )
+        # Speculators that draft from each request's own tokens read them here.
+        if hasattr(self.speculator, "attach_request_states"):
+            self.speculator.attach_request_states(self.req_states)
         self.adaptive_verification: AdaptiveVerificationManager | None = None
         self.input_buffers = InputBuffers(
             max_num_reqs=self.max_num_reqs,

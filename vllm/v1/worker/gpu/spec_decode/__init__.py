@@ -33,11 +33,11 @@ def init_speculator(vllm_config: VllmConfig, device: torch.device):
 
         return DSparkSpeculator(vllm_config, device)
     elif speculative_config.use_gemma4_mtp():
-        from vllm.v1.worker.gpu.spec_decode.gemma4.speculator import (
-            Gemma4Speculator,
+        from vllm.v1.worker.gpu.spec_decode.gemma4.prompt_lookup import (
+            gemma4_speculator_class,
         )
 
-        return Gemma4Speculator(vllm_config, device)
+        return gemma4_speculator_class()(vllm_config, device)
     elif speculative_config.use_multi_module_mtp():
         from vllm.v1.worker.gpu.spec_decode.multi_module_mtp.speculator import (
             MultiModuleMTPSpeculator,
