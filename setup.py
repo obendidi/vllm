@@ -1036,6 +1036,9 @@ class precompiled_wheel_utils:
                 flash_attn_files_to_skip = {
                     "vllm/vllm_flash_attn/__init__.py",
                     "vllm/vllm_flash_attn/flash_attn_interface.py",
+                    # The wheel's copy with vllm-project/flash-attention
+                    # 6d11b3c1b: SM90 forward honors num_splits.
+                    "vllm/vllm_flash_attn/cute/flash_fwd_sm90.py",
                 }
                 triton_kernels_regex = re.compile(
                     r"vllm/third_party/triton_kernels/(?:[^/.][^/]*/)*(?!\.)[^/]*\.py"

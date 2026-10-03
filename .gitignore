@@ -5,6 +5,9 @@
 vllm/vllm_flash_attn/*
 !vllm/vllm_flash_attn/__init__.py
 !vllm/vllm_flash_attn/flash_attn_interface.py
+!vllm/vllm_flash_attn/cute/
+vllm/vllm_flash_attn/cute/*
+!vllm/vllm_flash_attn/cute/flash_fwd_sm90.py
 
 # OpenAI triton kernels copied from source
 vllm/third_party/triton_kernels/*
